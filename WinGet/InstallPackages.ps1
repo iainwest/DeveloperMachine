@@ -3,7 +3,6 @@
 # 2. Edit the list of apps to install.
 # 3. Run this script as administrator.
 
-Write-Output "Installing Apps"
 $apps = @(
     @{name = "7zip.7zip" },
     @{name = "Adobe.Acrobat.Reader.64-bit" },
@@ -25,24 +24,24 @@ $apps = @(
     @{name = "OpenJS.NodeJS.Nightly" },
     @{name = "TimKosse.FileZilla.Client" },
     @{name = "WinDirStat.WinDirStat" },
-    @{name = "ScooterSoftware.BeyondCompare4"},
-    @{name = "Docker.DockerDesktop"},
-    @{name = "JGraph.Draw"},
-    @{name = "Mirantis.Lens"},
-    @{name = "Keeper.KeeperDesktop"},
-    @{name = "LINQPad.LINQPad.7"},
-    @{name = "GIMP.GIMP.Nightly"},
-    @{name = "Piriform.CCleaner"},
-    @{name = "Microsoft.Office"},
+    @{name = "ScooterSoftware.BeyondCompare4" },
+    @{name = "Docker.DockerDesktop" },
+    @{name = "JGraph.Draw" },
+    @{name = "Mirantis.Lens" },
+    @{name = "Keeper.KeeperDesktop" },
+    @{name = "LINQPad.LINQPad.7" },
+    @{name = "GIMP.GIMP.Nightly" },
+    @{name = "Piriform.CCleaner" },
+    @{name = "Microsoft.Office" },
     @{name = "JanDeDobbeleer.OhMyPosh" },
-    @{name = "Microsoft.Azure.CosmosEmulator"},
-    @{name = "Microsoft.Azure.FunctionsCoreTools"},
-    @{name = "Microsoft.Azure.DataCLI"},
-    @{name = "Microsoft.AzureCLI"},
-    @{name = "Microsoft.Azd"},
-    @{name = "Microsoft.Azure.StorageExplorer"},
-    @{name = "Microsoft.SQLServerManagementStudio"},
-    @{name = "Microsoft.Teams.Preview"},
+    @{name = "Microsoft.Azure.CosmosEmulator" },
+    @{name = "Microsoft.Azure.FunctionsCoreTools" },
+    @{name = "Microsoft.Azure.DataCLI" },
+    @{name = "Microsoft.AzureCLI" },
+    @{name = "Microsoft.Azd" },
+    @{name = "Microsoft.Azure.StorageExplorer" },
+    @{name = "Microsoft.SQLServerManagementStudio" },
+    @{name = "Microsoft.Teams.Preview" },
     @{name = "ShiningLight.OpenSSL" },
     @{name = "wOpenVPNTechnologies.OpenVPNConnect" },
     @{name = "PuTTY.PuTTY" },
@@ -56,9 +55,13 @@ $apps = @(
     @{name = "SlackTechnologies.Slack.Beta" },
     @{name = "WhatsApp.WhatsApp.Beta" },
     @{name = "Zoom.Zoom" }
+    
 );
+
 Foreach ($app in $apps) {
-    $listApp = winget list --exact -q $app.name
+Write-host "Installing Apps"
+    $listApp = winget list --exact $app.name
+    
     if (![String]::Join("", $listApp).Contains($app.name)) {
         Write-host "Installing: " $app.name
         winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name 
@@ -67,3 +70,4 @@ Foreach ($app in $apps) {
         Write-host "Skipping: " $app.name " (already installed)"
     }
 }
+Write-host "Apps Installed"
