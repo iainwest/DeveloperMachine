@@ -54,7 +54,9 @@ $apps = @(
     @{name = "GitHub.GitHubdesktop" },
     @{name = "SlackTechnologies.Slack.Beta" },
     @{name = "WhatsApp.WhatsApp.Beta" },
-    @{name = "Zoom.Zoom" }
+    @{name = "Zoom.Zoom" },
+    @{name = "Miro.Miro" },
+    @{name = "Figma.Figma"}
     
 );
 
